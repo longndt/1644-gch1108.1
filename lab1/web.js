@@ -1,6 +1,6 @@
 //1. declare host (server) name
 const host = "localhost"
-//2. declare server post
+//2. declare server port
 const port = 3000    //3000: default port of NodeJS
 //3. declare http module (library)
 const http = require('http')
