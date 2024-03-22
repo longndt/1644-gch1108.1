@@ -28,6 +28,5 @@ router.get('/cantho', (req, res) => {
   res.render('greenwich/ct');
 })
 
-
 //export module => bắt buộc
 module.exports = router;

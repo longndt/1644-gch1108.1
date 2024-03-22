@@ -6,8 +6,6 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-//khai báo router (1): tên file
-var greenwichRouter = require('./routes/greenwich');
 
 var app = express();
 
@@ -23,8 +21,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-//khai báo router (2): đường dẫn
-app.use('/greenwich', greenwichRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -41,5 +37,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+//khai báo port để deploy lên cloud
+app.listen(process.env.PORT || 3001);
 
 module.exports = app;

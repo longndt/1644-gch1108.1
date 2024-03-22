@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+//url: localhost:3000/users/hanoi123
+router.get('/hanoi123', (req, res) => {
+  res.render('greenwich/hn');
+})
 
 module.exports = router;
