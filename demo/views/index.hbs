@@ -1,2 +1,29 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<table border="1">
+   <tr>
+      <th>Student ID</th>
+      <th>Full Name</th>
+      <th>Birth Year</th>
+      <th>Gender</th>
+      <th>GPA</th>
+      <th>Birth Place</th>
+      <th>Image</th>
+      <th>Menu</th>
+   </tr>
+   {{#each studentList }}
+   <tr>
+      <td>{{ id }}</td>
+      <td>{{ name }}</td>
+      <td>{{ birthYear }}</td>
+      <td>{{ gender }}</td>
+      <td>{{ gpa }}</td>
+      <td>{{ birthPlace }}</td>
+      <td>
+         <img src="{{ image }}" width="100" height="100">
+      </td>
+      <td>
+
+      </td>
+   </tr>
+   {{/each}}
+
+</table>
