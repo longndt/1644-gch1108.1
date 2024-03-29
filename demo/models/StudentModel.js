@@ -8,8 +8,7 @@ var StudentSchema = mongoose.Schema(
       birthYear: Number,   //integer
       gender: String,
       gpa: Number,         //double
-      image: String,
-      birthPlace: String
+      image: String
    }
 );
 //declare model (to be used in routes - controllers)
