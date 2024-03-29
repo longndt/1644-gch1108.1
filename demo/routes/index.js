@@ -12,5 +12,22 @@ router.get('/', async (req, res) => {
 });
 
 //DELETE feature
+router.get('/delete/:id', async (req, res) => {
+  //get id from url
+  let id = req.params.id;
+  //delete document in collection by id
+  //SQL: DELETE FROM students WHERE id = "id"
+  await StudentModel.findByIdAndDelete(id);
+  //console.log("Delete student succeed !");
+  //redirect to student list page
+  res.redirect('/');
+})
+
+router.get('/deleteall', async (req, res) => {
+  //SQL: DELETE FROM students
+  //SQL: TRUNCATE TABLE students
+  await StudentModel.deleteMany();
+  res.redirect('/');
+})
 
 module.exports = router;
