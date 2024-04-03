@@ -30,4 +30,19 @@ router.get('/deleteall', async (req, res) => {
    res.redirect('/student');
 })
 
+//step 1: render "Add student" form for user to input data
+router.get('/add', (req, res) => {
+   res.render('student/add');
+})
+
+//step 2: get input data from form and add data to database
+router.post('/add', async (req, res) => {
+   //get input data from form
+   var student = req.body;
+   //add data to database
+   await StudentModel.create(student);
+   //redirect to student homepage
+   res.redirect('/student');
+})
+
 module.exports = router;

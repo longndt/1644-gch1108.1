@@ -11,6 +11,11 @@ var studentRouter = require('./routes/student');
 var moduleRouter = require('./routes/module');
 
 var app = express();
+//import body-parser library (to get input from client)
+var bodyParser = require('body-parser');
+//config body-parser library
+app.use(bodyParser.urlencoded({ extended: false }));
+
 //import mongoose library
 var mongoose = require('mongoose');
 //config database connection + database name
