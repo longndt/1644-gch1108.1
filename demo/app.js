@@ -8,12 +8,13 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 //declare router for "student" (1)
 var studentRouter = require('./routes/student');
+var moduleRouter = require('./routes/module');
 
 var app = express();
 //import mongoose library
 var mongoose = require('mongoose');
 //config database connection + database name
-var database = "mongodb+srv://longndt:aPbCO6VSPsHcQHd2@cluster123.uds3yli.mongodb.net/greenwichdb"
+var database = "mongodb+srv://longndt:aPbCO6VSPsHcQHd2@cluster123.uds3yli.mongodb.net/greenwichdb";
 //connect to database
 mongoose.connect(database)
   .then(() => console.log("Connect to db success"))
@@ -33,6 +34,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 //declare router for "student" (2)
 app.use('/student', studentRouter);
+app.use('/module', moduleRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
