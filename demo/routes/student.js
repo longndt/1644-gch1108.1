@@ -7,7 +7,7 @@ var router = express.Router();
 router.get('/', async (req, res) => {
    //SQL: SELECT * FROM students
    var studentList = await StudentModel.find({});
-   //console.log(studentList);
+   console.log(studentList);
    res.render('student/index', { studentList });
 });
 
