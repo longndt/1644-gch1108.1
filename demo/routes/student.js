@@ -20,14 +20,14 @@ router.get('/delete/:id', async (req, res) => {
    await StudentModel.findByIdAndDelete(id);
    //console.log("Delete student succeed !");
    //redirect to student list page
-   res.redirect('/');
+   res.redirect('/student');
 })
 
 router.get('/deleteall', async (req, res) => {
    //SQL: DELETE FROM students
    //SQL: TRUNCATE TABLE students
    await StudentModel.deleteMany();
-   res.redirect('/');
+   res.redirect('/student');
 })
 
 module.exports = router;
