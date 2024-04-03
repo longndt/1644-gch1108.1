@@ -1,5 +1,6 @@
 var express = require('express');
 const StudentModel = require('../models/StudentModel');
+const CityModel = require('../models/CityModel');
 var router = express.Router();
 
 //READ feature
@@ -31,8 +32,9 @@ router.get('/deleteall', async (req, res) => {
 })
 
 //step 1: render "Add student" form for user to input data
-router.get('/add', (req, res) => {
-   res.render('student/add');
+router.get('/add', async (req, res) => {
+   var cities = await CityModel.find({});
+   res.render('student/add', { cities });
 })
 
 //step 2: get input data from form and add data to database
