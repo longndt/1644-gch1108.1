@@ -59,4 +59,18 @@ router.post('/edit/:id', async (req, res) => {
    await StudentModel.findByIdAndUpdate(id,student);
    res.redirect('/student');
 })
+
+//show student detail
+router.get('/detail/:id', async (req, res) => {
+   let id = req.params.id;
+   var student = await StudentModel.findById(id);
+   res.render('student/detail', { student });
+})
+
+//show student list (customer layout)(
+router.get('/list', async (req, res) => {
+   var students = await StudentModel.find({});
+   res.render('student/list', { students });
+})
+
 module.exports = router;
