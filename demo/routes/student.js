@@ -8,7 +8,7 @@ var router = express.Router();
 router.get('/', async (req, res) => {
    //SQL: SELECT * FROM students
    var studentList = await StudentModel.find({});
-   console.log(studentList);
+   //console.log(studentList);
    res.render('student/index', { studentList });
 });
 
@@ -71,6 +71,37 @@ router.get('/detail/:id', async (req, res) => {
 router.get('/list', async (req, res) => {
    var students = await StudentModel.find({});
    res.render('student/list', { students });
+})
+
+//search by student name
+router.post('/search', async (req, res) => {
+   let keyword = req.body.keyword;
+   let students = await StudentModel.find({ name: new RegExp(keyword, "i") });
+   res.render('student/index', { studentList : students });
+})
+
+//sort by student id ascending
+router.get('/sortid/asc', async (req, res) => {
+   let studentList = await StudentModel.find().sort({ name: 1 });
+   res.render('student/index', { studentList });
+})
+
+//sort by student id descending
+router.get('/sortid/desc', async (req, res) => {
+   let studentList = await StudentModel.find().sort({ name: -1 });
+   res.render('student/index', { studentList });
+})
+
+//filter student by "male" gender
+router.get('/male', async (req, res) => {
+   let studentList = await StudentModel.find({ gender : "Male"});
+   res.render('student/index', { studentList });
+})
+
+//filter student by "female" gender
+router.get('/female', async (req, res) => {
+   let studentList = await StudentModel.find({ gender: "Female" });
+   res.render('student/index', { studentList });
 })
 
 module.exports = router;
