@@ -23,3 +23,4 @@ var StudentModel = mongoose.model("students", StudentSchema);  //students: colle
 //var StudentModel = mongoose.model("sinh vien", StudentSchema, "student");
 //export module
 module.exports = StudentModel;
+

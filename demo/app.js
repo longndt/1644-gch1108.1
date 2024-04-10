@@ -8,7 +8,6 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 //declare router for "student" (1)
 var studentRouter = require('./routes/student');
-var moduleRouter = require('./routes/module');
 var cityRouter = require('./routes/city');
 var classRouter = require('./routes/class');
 
@@ -41,7 +40,6 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 //declare router for "student" (2)
 app.use('/student', studentRouter);
-app.use('/module', moduleRouter);
 app.use('/city', cityRouter);
 app.use('/class', classRouter);
 
