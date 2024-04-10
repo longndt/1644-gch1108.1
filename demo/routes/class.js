@@ -7,4 +7,10 @@ router.get('/', async (req, res) => {
    res.render('class/index', { classList });
 })
 
+router.get('/delete/:id', async (req, res) => {
+   await ClassModel.findByIdAndDelete(req.params.id);
+   res.redirect('/class');
+})
+
+
 module.exports = router;

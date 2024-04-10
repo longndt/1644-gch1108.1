@@ -35,7 +35,8 @@ router.get('/deleteall', async (req, res) => {
 //step 1: render "Add student" form for user to input data
 router.get('/add', async (req, res) => {
    var cities = await CityModel.find({});
-   res.render('student/add', { cities });
+   var classes = await ClassModel.find({});
+   res.render('student/add', { cities, classes });
 })
 
 //step 2: get input data from form and add data to database
