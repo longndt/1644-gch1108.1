@@ -9,7 +9,12 @@ var StudentSchema = mongoose.Schema(
       gender: String,
       gpa: Number,         //double
       image: String,
-      city: String
+      city: String,
+      //1 class - many students
+      class: {
+         type: mongoose.Schema.Types.ObjectId,
+         ref: 'classes'
+      }
    }
 );
 //declare model (to be used in routes - controllers)

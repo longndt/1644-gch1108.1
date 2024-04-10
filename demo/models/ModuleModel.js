@@ -8,3 +8,4 @@ const ModuleSchema = mongoose.Schema(
 
 const ModuleModel = mongoose.model("modules", ModuleSchema);
 module.exports = ModuleModel;
+

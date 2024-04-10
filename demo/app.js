@@ -10,6 +10,7 @@ var usersRouter = require('./routes/users');
 var studentRouter = require('./routes/student');
 var moduleRouter = require('./routes/module');
 var cityRouter = require('./routes/city');
+var classRouter = require('./routes/class');
 
 var app = express();
 //import body-parser library (to get input from client)
@@ -42,6 +43,7 @@ app.use('/users', usersRouter);
 app.use('/student', studentRouter);
 app.use('/module', moduleRouter);
 app.use('/city', cityRouter);
+app.use('/class', classRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -58,5 +60,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+app.listen(5000);
 
 module.exports = app;
