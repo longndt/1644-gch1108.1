@@ -38,6 +38,46 @@ app.get('/:id', async (req, res) => {
    }
 });
 
+//CREATE DOCUMENT
+app.post('/add', async (req, res) => {
+   try {
+      const newDoc = req.body;
+      const newDocRef = doc(collection(db, collectionName));
+      await setDoc(newDocRef, newDoc);
+      res.status(201).send("Create document succeed !");
+   } catch (error) {
+      console.error(error);
+      res.status(400).send("Error creating document: " + error.message);
+   }
+});
+
+//UPDATE DOCUMENT
+app.put('/update/:id', async (req, res) => {
+   try {
+      const { id } = req.params;
+      const updatedData = req.body;
+      const docRef = doc(db, collectionName, id);
+      await updateDoc(docRef, updatedData);
+      res.status(200).send('Update document succeed !');
+   } catch (error) {
+      console.error(error);
+      res.status(400).send("Error updating document: " + error.message);
+   }
+});
+
+//DELETE DOCUMENT
+app.delete('/delete/:id', async (req, res) => {
+   try {
+      const { id } = req.params;
+      const docRef = doc(db, collectionName, id);
+      await deleteDoc(docRef);
+      res.status(200).send("Delete document succeed !");
+   } catch (error) {
+      console.error(error);
+      res.status(400).send("Error deleting document: " + error.message);
+   }
+});
+
 //run server by listening port
 const port = 3000;
 app.listen(port);
