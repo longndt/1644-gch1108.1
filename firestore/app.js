@@ -20,6 +20,24 @@ app.get('/', async (req, res) => {
    }
 });
 
+//READ DOCUMENT
+app.get('/:id', async (req, res) => {
+   try {
+      const { id } = req.params;
+      const documentRef = doc(db, collectionName, id);
+      const documentSnap = await getDoc(documentRef);
+      if (documentSnap.exists()) {
+         const documentData = documentSnap.data();
+         res.status(200).send(documentData);
+      } else {
+         res.status(404).send("Document not found !");
+      }
+   } catch (error) {
+      console.error("An error occurred:", error);
+      res.status(500).send("Error loading document: " + error.message);
+   }
+});
+
 //run server by listening port
 const port = 3000;
 app.listen(port);
