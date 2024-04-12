@@ -19,3 +19,7 @@ app.get('/', async (req, res) => {
       res.status(500).send("Error loading collection: " + error.message);
    }
 });
+
+//run server by listening port
+const port = 3000;
+app.listen(port);
