@@ -83,5 +83,6 @@ app.delete('/delete/:id', async (req, res) => {
 });
 
 //run server by listening port
-const port = 3000;
+//set custom port as 3001 to deploy on Render
+const port = process.env.PORT || 3001;
 app.listen(port);
