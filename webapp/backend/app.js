@@ -4,6 +4,10 @@ const { collection, doc, getDoc, getDocs, setDoc, updateDoc, deleteDoc } = requi
 const app = express();
 app.use(express.json());
 
+//import and config CORS for backend
+const cors = require('cors');
+app.use(cors());
+
 //IMPORTANCE: set collection name
 var collectionName = "mobiles";
 
