@@ -24,6 +24,19 @@ app.get('/', async (req, res) => {
    }
 });
 
+//DELETE DOCUMENT
+app.delete('/delete/:id', async (req, res) => {
+   try {
+      const { id } = req.params;
+      const docRef = doc(db, collectionName, id);
+      await deleteDoc(docRef);
+      res.status(200).send("Delete document succeed !");
+   } catch (error) {
+      console.error(error);
+      res.status(400).send("Error deleting document: " + error.message);
+   }
+});
+
 //READ DOCUMENT
 app.get('/:id', async (req, res) => {
    try {
